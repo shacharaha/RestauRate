@@ -8,15 +8,15 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.shachar.restaurate.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewRestaurantActivity" />
-        <activity android:name=".RestaurantListActivity"></activity>
+        <activity android:name="com.example.shachar.restaurate.activity.NewRestaurantActivity" />
+        <activity android:name="com.example.shachar.restaurate.activity.RestaurantListActivity"></activity>
     </application>
 
 </manifest>

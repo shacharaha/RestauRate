@@ -1,7 +1,9 @@
-package com.example.shachar.resturate;
+package com.example.shachar.restaurate.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.shachar.resturate.R;
 
 public class RestaurantListActivity extends AppCompatActivity {
 
