@@ -25,6 +25,20 @@ public class Restaurant {
         this.clean = clean;
     }
 
+    public Restaurant(JSONObject jsonObject) {
+        try {
+            this.name = jsonObject.getString(J_NAME);
+            this.address = jsonObject.getString(J_ADDRESS);
+            this.service = (float)jsonObject.get(J_SERVICE);
+            this.taste = (float)jsonObject.get(J_TASTE);
+            this.organized = (float)jsonObject.get(J_ORGANIZED);
+            this.speed = (float)jsonObject.get(J_SPEED);
+            this.clean = (float)jsonObject.get(J_CLEAN);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
     public Restaurant() {
     }
 
@@ -91,6 +105,7 @@ public class Restaurant {
     private final String J_ORGANIZED = "organized";
     private final String J_SPEED = "speed";
     private final String J_CLEAN = "clean";
+
     public JSONObject toJSON() {
         JSONObject jsonObject = new JSONObject();
         try {
