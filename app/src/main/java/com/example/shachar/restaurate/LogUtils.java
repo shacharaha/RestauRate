@@ -11,4 +11,9 @@ public class LogUtils {
         Log.d("LOG_U", s);
 
     }
+    public final static void logFireBaseAuth(String s)
+    {
+        Log.d("FIRE_BASE_AUTH", s);
+
+    }
 }

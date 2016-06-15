@@ -6,4 +6,6 @@ package com.example.shachar.restaurate;
 public class Constants {
     public static final String RESTAURANT = "restaurant";
     public static final String RESTAURANTS = "restaurants";
+
+    public static final int NUMBER_OF_RATING_BARS = 5;
 }

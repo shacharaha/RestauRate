@@ -35,6 +35,38 @@ public class NewRestaurantActivity extends AppCompatActivity {
         rbOrganized = (RatingBar)findViewById(R.id.rb_organized);
         rbSpeed = (RatingBar)findViewById(R.id.rb_speed);
         rbClean = (RatingBar)findViewById(R.id.rb_clean);
+        restaurant = new Restaurant();
+        rbService.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                restaurant.setService(rating);
+            }
+        });
+        rbTaste.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                restaurant.setTaste(rating);
+            }
+        });
+        rbOrganized.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                restaurant.setOrganized(rating);
+            }
+        });
+        rbSpeed.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                restaurant.setSpeed(rating);
+            }
+        });
+        rbClean.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                restaurant.setClean(rating);
+            }
+
+        });
 
         btnFinish = (Button)findViewById(R.id.btn_finish);
         btnFinish.setOnClickListener(new View.OnClickListener() {
@@ -44,14 +76,8 @@ public class NewRestaurantActivity extends AppCompatActivity {
                 if(!isStringEmpty(etName.getText().toString()))
                     if(!isStringEmpty(etAddress.getText().toString()))
                     {
-                        restaurant = new Restaurant();
                         restaurant.setName(etName.getText().toString());
                         restaurant.setAddress(etAddress.getText().toString());
-                        restaurant.setService(rbService.getRating());
-                        restaurant.setTaste(rbTaste.getRating());
-                        restaurant.setOrganized(rbOrganized.getRating());
-                        restaurant.setSpeed(rbSpeed.getRating());
-                        restaurant.setClean(rbClean.getRating());
 
                         Intent intent = new Intent();
                         intent.putExtra("restaurant", restaurant.toJSON().toString());

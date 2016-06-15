@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "716791630614",
+    "firebase_url": "https://project-4604682362893329843.firebaseio.com",
+    "project_id": "project-4604682362893329843",
+    "storage_bucket": "project-4604682362893329843.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716791630614:android:48ff611fddb02921",
+        "android_client_info": {
+          "package_name": "com.example.shachar.resturate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716791630614-luuu7b8vvidqe7ikphg2c9nb5822qfpt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKyq7rvvldsd6gaB3hoE5zfnZuq8fRTRU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

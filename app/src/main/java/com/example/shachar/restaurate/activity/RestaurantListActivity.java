@@ -8,22 +8,41 @@ import android.widget.ListView;
 
 import com.example.shachar.restaurate.Constants;
 import com.example.shachar.restaurate.LogUtils;
+import com.example.shachar.restaurate.model.Restaurant;
 import com.example.shachar.resturate.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
 
 public class RestaurantListActivity extends AppCompatActivity {
 
     ListView listView;
     ArrayAdapter adapter;
-
-    String[] mobileArray = {"Android","IPhone","WindowsMobile","Blackberry","WebOS","Ubuntu","Windows7","Max OS X"};
+    ArrayList<Restaurant> restaurantList;
+    String[] restaurantsNames;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list);
-        adapter = new ArrayAdapter(this, R.layout.list_item, mobileArray);
-        listView = (ListView)findViewById(R.id.lv_restaurant_list);
-        listView.setAdapter(adapter);
+        restaurantList = new ArrayList<>();
+
         Intent intent = getIntent();
-        LogUtils.log(intent.getStringExtra(Constants.RESTAURANTS));
+        try {
+            JSONArray restaurantJSONArray = new JSONArray(intent.getStringExtra(Constants.RESTAURANTS));
+            for(int i = 0 ; i < restaurantJSONArray.length(); i++) {
+                restaurantList.add(new Restaurant(restaurantJSONArray.getJSONObject(i)));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        restaurantsNames = new String[restaurantList.size()];
+        for (int i = 0; i < restaurantsNames.length; i++) {
+            restaurantsNames[i] = restaurantList.get(i).toString();
+        }
+        listView = (ListView)findViewById(R.id.lv_restaurant_list);
+        adapter = new ArrayAdapter(this, R.layout.list_item, restaurantsNames);
+        listView.setAdapter(adapter);
     }
 }

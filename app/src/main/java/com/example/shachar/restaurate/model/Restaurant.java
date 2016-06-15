@@ -1,5 +1,7 @@
 package com.example.shachar.restaurate.model;
 
+import com.example.shachar.restaurate.Constants;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -9,11 +11,11 @@ import org.json.JSONObject;
 public class Restaurant {
     private String name;
     private String address;
-    private float service;
-    private float taste;
-    private float organized;
-    private float speed;
-    private float clean;
+    private double service;
+    private double taste;
+    private double organized;
+    private double speed;
+    private double clean;
 
     public Restaurant(String name, String address, float service, float taste, float organize, float speed, float clean) {
         this.name = name;
@@ -29,11 +31,11 @@ public class Restaurant {
         try {
             this.name = jsonObject.getString(J_NAME);
             this.address = jsonObject.getString(J_ADDRESS);
-            this.service = (float)jsonObject.get(J_SERVICE);
-            this.taste = (float)jsonObject.get(J_TASTE);
-            this.organized = (float)jsonObject.get(J_ORGANIZED);
-            this.speed = (float)jsonObject.get(J_SPEED);
-            this.clean = (float)jsonObject.get(J_CLEAN);
+            this.service = jsonObject.getDouble(J_SERVICE);
+            this.taste = jsonObject.getDouble(J_TASTE);
+            this.organized = jsonObject.getDouble(J_ORGANIZED);
+            this.speed = jsonObject.getDouble(J_SPEED);
+            this.clean = jsonObject.getDouble(J_CLEAN);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -58,39 +60,39 @@ public class Restaurant {
         this.address = address;
     }
 
-    public float getService() {
+    public double getService() {
         return service;
     }
 
-    public void setService(float service) {
+    public void setService(double service) {
         this.service = service;
     }
 
-    public float getTaste() {
+    public double getTaste() {
         return taste;
     }
 
-    public void setTaste(float taste) {
+    public void setTaste(double taste) {
         this.taste = taste;
     }
 
-    public float getOrganized() {
+    public double getOrganized() {
         return organized;
     }
 
-    public void setOrganized(float organized) {
+    public void setOrganized(double organized) {
         this.organized = organized;
     }
 
-    public float getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
-    public void setSpeed(float speed) {
+    public void setSpeed(double speed) {
         this.speed = speed;
     }
 
-    public float getClean() {
+    public double getClean() {
         return clean;
     }
 
@@ -121,5 +123,30 @@ public class Restaurant {
             e.printStackTrace();
         }
         return jsonObject;
+    }
+    public double getRatingAverage()
+    {
+        double[] rating = new double[Constants.NUMBER_OF_RATING_BARS];
+        rating[0] = this.service;
+        rating[1] = this.taste;
+        rating[2] = this.organized;
+        rating[3] = this.speed;
+        rating[4] = this.clean;
+        return Utils.getAverage(rating);
+    }
+
+    @Override
+    public String toString() {
+        String itemData = "";
+        itemData+= "Name: " + this.name + "\n";
+        itemData+= "Address: " + this.address + "\n";
+        itemData+= "average rating: " + this.getRatingAverage() + "\n";
+        itemData+= "Service rating: " + this.service + "\n";
+        itemData+= "Taste rating: " + this.taste + "\n";
+        itemData+= "Organized rating: " + this.organized + "\n";
+        itemData+= "Speed rating: " + this.speed + "\n";
+        itemData+= "Clean rating: " + this.clean;
+
+        return itemData;
     }
 }
