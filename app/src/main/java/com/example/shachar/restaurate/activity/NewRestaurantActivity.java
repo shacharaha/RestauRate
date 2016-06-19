@@ -12,6 +12,8 @@ import android.widget.RatingBar;
 import com.example.shachar.restaurate.model.Restaurant;
 import com.example.shachar.resturate.R;
 
+import firebase.MyFireBaseDataBase;
+
 public class NewRestaurantActivity extends AppCompatActivity {
     private EditText etName;
     private EditText etAddress;
@@ -78,6 +80,11 @@ public class NewRestaurantActivity extends AppCompatActivity {
                     {
                         restaurant.setName(etName.getText().toString());
                         restaurant.setAddress(etAddress.getText().toString());
+
+                        MyFireBaseDataBase myFireBaseDataBase = new MyFireBaseDataBase();
+                        myFireBaseDataBase.saveRestaurant(restaurant);
+
+
 
                         Intent intent = new Intent();
                         intent.putExtra("restaurant", restaurant.toJSON().toString());

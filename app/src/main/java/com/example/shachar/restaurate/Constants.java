@@ -8,4 +8,7 @@ public class Constants {
     public static final String RESTAURANTS = "restaurants";
 
     public static final int NUMBER_OF_RATING_BARS = 5;
+
+    public static final String FB_RESTAURANT = "restaurant";
+    public static final String FB_RESTAURANTS = "restaurants";
 }

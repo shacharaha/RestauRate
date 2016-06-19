@@ -20,6 +20,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import firebase.MyFireBaseDataBase;
+
 public class MainActivity extends AppCompatActivity {
 
     private final int NEW_RESTAURANT_ACTIVITY = 0;
@@ -29,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MyFireBaseDataBase myFireBaseDataBase = new MyFireBaseDataBase();
+
         Button btnCreateNewRestaurant = (Button) findViewById(R.id.btn_create_new_restaurant);
         Button btnRestaurantList = (Button) findViewById(R.id.btn_restaurant_list);
         btnCreateNewRestaurant.setOnClickListener(new View.OnClickListener() {
